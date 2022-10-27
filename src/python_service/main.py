@@ -1,4 +1,7 @@
 from flask import Flask
+import socket
+
+host = socket.gethostbyname("python_service")
 
 app = Flask(__name__)
 
@@ -6,4 +9,4 @@ app = Flask(__name__)
 def GetSecret():
     return 'python'
 
-app.run(debug=False, host='0.0.0.0', port=80)
+app.run(debug=False, host=host, port=80)
