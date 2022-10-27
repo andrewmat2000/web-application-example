@@ -1,12 +1,10 @@
-FROM python:3.10-alpine
+FROM python:3.10-slim-buster
 
-WORKDIR /opt/python_service
-COPY ./ /opt/python_service
+WORKDIR /app
 
-RUN chmod +x ./start.sh
-RUN python3 -m venv venv
-RUN chmod +x venv/bin/pip
-RUN venv/bin/python3 -m pip install --upgrade pip
-RUN venv/bin/pip install -r requirements.txt
+COPY requirements.txt requirements.txt
+RUN pip3 install -r requirements.txt
 
-CMD './start.sh'
+COPY . .
+
+CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0", "--port=80"]
