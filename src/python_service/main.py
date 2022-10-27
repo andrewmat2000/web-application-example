@@ -1,7 +1,5 @@
 from flask import Flask
 
-print ("Hi there")
-
 app = Flask(__name__)
 
 @app.route('/get_secret/')
