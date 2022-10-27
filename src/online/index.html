@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div><span>Csharp secret: </span><span id="div-csharp-secret"></span></div>
+    <div><span>Python secret: </span><span id="div-python-secret"></span></div>
+    <div></div>
+    <script>
+      const divCsharpSecret = document.getElementById("div-csharp-secret");
+      const divPythonSecret = document.getElementById("div-python-secret");
+
+      fetch("/csharp/get_secret/").then((response) =>
+        response.text().then((text) => (divCsharpSecret.innerHTML = text))
+      );
+
+      fetch("/python/get_secret/").then((response) =>
+        response.text().then((text) => (divPythonSecret.innerHTML = text))
+      );
+    </script>
+  </body>
+</html>

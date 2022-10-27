@@ -1,0 +1,32 @@
+version: '3.5'
+services:
+  frontend:
+    build: ./online/
+    ports:
+      - "80:80"
+    restart: always
+    networks:
+      - default
+    depends_on:
+      - csharp_service
+      - python_service
+
+  csharp_service:
+    hostname: csharp_service
+    build: ./csharp_service/
+
+    restart: always
+    networks:
+      - default
+
+  python_service:
+    hostname: python_service
+    build: ./python_service/
+
+    restart: always
+    networks:
+      - default
+
+
+networks:
+  default: {}
